@@ -1,0 +1,73 @@
+openapi: 3.0.0
+info:
+  title: Diyemedim API
+  version: 1.0.0
+  description: API documentation for the Diyemedim application
+servers:
+  - url: http://localhost:3000/api
+    description: Local server
+paths:
+  /email/send:
+    post:
+      summary: Send an email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                to:
+                  type: string
+                  format: email
+                  description: Recipient email address
+                  example: test@example.com
+                subject:
+                  type: string
+                  description: Email subject
+                  example: Hello from Diyemedim!
+                text:
+                  type: string
+                  description: Plain text content of the email
+                  example: This is a test email.
+                html:
+                  type: string
+                  description: HTML content of the email
+                  example: <h1>This is a test email!</h1>
+              required:
+                - to
+                - subject
+      responses:
+        '200':
+          description: Email sent successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Email sent successfully!
+        '400':
+          description: Missing required email parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Missing required email parameters: to, subject, text or html
+        '500':
+          description: Failed to send email
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Failed to send email
+                  details:
+                    type: string
+                    example: Error details

@@ -1,0 +1,41 @@
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm/
+
+# Optional REPL history
+.node_repl_history
+
+# dotenv environment variables file
+.env
+.env.development
+.env.test
+.env.production
+
+# TypeScript files
+*.ts
+!*.d.ts
+
+# Build artifacts
+dist/
+build/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+.Trashes
+pmk.log
