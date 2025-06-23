@@ -9,18 +9,19 @@ const mg = mailgun.client({
   url: process.env.MAILGUN_API_BASE_URL || 'https://api.mailgun.net'
 });
 
-const sendEmail = async (to, subject, text, html) => {
+const sendEmail = async (to, subject, html) => {
   const mailgunDomain = process.env.MAILGUN_DOMAIN;
+  const mailgunDomainPrefix = process.env.MAILGUN_DOMAIN_PREFIX;
   if (!mailgunDomain) {
     throw new Error('MAILGUN_DOMAIN is not defined in environment variables.');
   }
 
   try {
     const msg = await mg.messages.create(mailgunDomain, {
-      from: `Excited User <mailgun@${mailgunDomain}>`,
+      //from: `Excited User <mailgun@${mailgunDomain}>`,
+      from: `${mailgunDomainPrefix}@${mailgunDomain}>`,
       to: [to],
       subject: subject,
-      text: text,
       html: html,
     });
     logger.info('Email sent successfully', { messageId: msg.id, to, subject });
