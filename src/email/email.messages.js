@@ -16,7 +16,7 @@ const readHtmlTemplate = (templatePath) => {
 // Define email messages directly
 emailMessages.agiz_kokusu = {
   subject: 'Bir Nefes Kadar Yakın Olmak İstiyoruz ama Bir Sorun Var!',
-  html: readHtmlTemplate('agiz_kokusu.html')
+  html: readHtmlTemplate('agiz-kokusu.html')
 };
 
 emailMessages.password_reset = {
